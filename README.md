@@ -20,6 +20,6 @@ samples, guidance on mobile development, and a full API reference.
 
 ### Watch the video
 
-<video src="https://github.com/himanshu64/flutter-phone-auth/blob/master/demo/otp.webm)https://github.com/himanshu64/flutter-phone-auth/blob/master/demo/otp.mp4" controls>
+<video src="https://github.com/himanshu64/flutter-phone-auth/blob/master/demo/otp.mp4" controls>
   Your browser does not support the video tag.
 </video>
