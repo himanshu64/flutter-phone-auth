@@ -37,6 +37,7 @@ class SignInPhoneViewBuilder extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<SignInState>(signInPhoneModelProvider, (_, state) {
+     
       if (state == const SignInState.success()) {
         _openVerification(context);
       }
@@ -109,117 +110,119 @@ class _SignInPhoneViewState extends State<SignInPhoneView> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          // title: const Text(
-          //   "Sign in with phone number",
-          // ),
+          
           ),
-      body: SingleChildScrollView(
+      body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 25),
-        child: SizedBox(
-          height: size.height,
-          width: size.width,
-          child: Column(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
-                Text(
-                  "We need to verity your number",
-                  style: GoogleFonts.inter(
-                      fontSize: 24,
-                      color: neuteralEbony,
-                      fontWeight: FontWeight.w700),
-                ),
-                const SizedBox(height: 10),
-
-                Text(
-                  "Please enter your phone number to receive a verification code.",
-                  style: GoogleFonts.inter(
-                      fontSize: 16,
-                      color: paleSky,
-                      fontWeight: FontWeight.w400),
-                  // textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  children: [
-                   
-                const SizedBox(width: 5),
-                    Flexible(
-                      child: TextFormField(
-                        focusNode: focusNode,
-                        keyboardType: TextInputType.phone,
-                        controller: controller,
-                        style: const TextStyle(fontSize: 18),
-                        decoration: InputDecoration(
-                          hintText: widget.phonePlaceholder,
-                          hintStyle: TextStyle(
-                            fontSize: 18,
-                            letterSpacing: -0.2,
-                            color: Colors.grey.shade400,
-                          ),
-                          prefix:  SizedBox(
-           
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(AppRoutes.countriesView);
-                    },
-                   
-                    child: Padding(
-                      padding: const EdgeInsets.only(right: 5.0),
-                      child: Text(
-                        widget.phoneCode,
-                        style: GoogleFonts.inter(
-                            fontSize: 18, fontWeight: FontWeight.normal, color: paleSky),
-                      ),
-                    ),
-                  ),
-                ),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12.0)),
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.grey.shade300, width: 1.0),
-                            borderRadius: BorderRadius.circular(12.0),
-                          ),
+        
+        width: size.width,
+        child: Column(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 10),
+              Text(
+                "We need to verity your number",
+                style: GoogleFonts.inter(
+                    fontSize: 24,
+                    color: neuteralEbony,
+                    fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 10),
+      
+              Text(
+                "Please enter your phone number to receive a verification code.",
+                style: GoogleFonts.inter(
+                    fontSize: 16,
+                    color: paleSky,
+                    fontWeight: FontWeight.w400),
+                // textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20),
+              Row(
+                children: [
+                 
+              const SizedBox(width: 5),
+                  Flexible(
+                    child: TextFormField(
+                      focusNode: focusNode,
+                      keyboardType: TextInputType.phone,
+                      controller: controller,
+                      style: const TextStyle(fontSize: 18),
+                      decoration: InputDecoration(
+                        hintText: widget.phonePlaceholder,
+                        hintStyle: TextStyle(
+                          fontSize: 18,
+                          letterSpacing: -0.2,
+                          color: Colors.grey.shade400,
                         ),
-                        inputFormatters: [widget.formatter],
-                        
-                      ),
+                        prefix:  SizedBox(
+         
+                child: InkWell(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AppRoutes.countriesView);
+                  },
+                 
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 5.0),
+                    child: Text(
+                      widget.phoneCode,
+                      style: GoogleFonts.inter(
+                          fontSize: 18, fontWeight: FontWeight.normal, color: paleSky),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 50),
-                SizedBox(
-                  width: double.infinity,
-                  child: CustomElevatedButton(
-                    title: "Get OTP",
-                    onPressed: widget.canSubmit ? widget.onSubmit : null,
                   ),
                 ),
-                // if (widget.errorText != null) ErrorText(message: widget.errorText??''),
-
-                const Spacer(),
-
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SvgPicture.asset("assets/svg/radio.svg"),
-                    const SizedBox(
-                      width: 10.0,
+              ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0)),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Colors.grey.shade300, width: 1.0),
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                      ),
+                      inputFormatters: [widget.formatter],
+                      
                     ),
-                    Flexible(
-                        child: Text(
-                      "Allow fydaa to send financial knowledge and critical alerts on your WhatsApp.",
-                      style: GoogleFonts.inter(
-                          fontSize: 12.0,
-                          color: paleSky,
-                          fontWeight: FontWeight.w400),
-                    ))
-                  ],
-                )
-              ]),
-        ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 50),
+              SizedBox(
+                width: double.infinity,
+                child: CustomElevatedButton(
+                  title: "Get OTP",
+                  onPressed: widget.canSubmit ? widget.onSubmit : null,
+                ),
+              ),
+              // if (widget.errorText != null) ErrorText(message: widget.errorText??''),
+      
+              
+         Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom:10.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SvgPicture.asset("assets/svg/radio.svg"),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Flexible(
+                          child: Text(
+                        "Allow fydaa to send financial knowledge and critical alerts on your WhatsApp.",
+                        style: GoogleFonts.inter(
+                            fontSize: 12.0,
+                            color: paleSky,
+                            fontWeight: FontWeight.w400),
+                      ))
+                    ],
+                  ),
+                ),
+              )
+           
+           
+            ]),
       ),
     );
   }

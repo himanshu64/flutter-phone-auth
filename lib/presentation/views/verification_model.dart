@@ -6,7 +6,7 @@ import 'package:flutter_phone_auth/services/auth_service.dart';
 import 'package:flutter_phone_auth/state/sign_in_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-const delayBeforeUserCanRequestNewCode = 3000;
+const delayBeforeUserCanRequestNewCode = 30;
 
 class SignInVerificationModel extends StateNotifier<SignInState> {
   SignInVerificationModel({

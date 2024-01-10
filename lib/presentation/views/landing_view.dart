@@ -16,20 +16,20 @@ class SignInLandingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DoubleBackToCloseApp(
-      snackBar: const SnackBar(
-            content: Text('Tap back again to leave'),
-          ),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text(
-            "Firebase Phone Auth with Riverpod",
-          ),
-          automaticallyImplyLeading: false,
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text(
+          "Firebase Phone Auth",
         ),
-        
-        body: Container(
+        automaticallyImplyLeading: false,
+      ),
+      
+      body: DoubleBackToCloseApp(
+        snackBar: const SnackBar(
+          content: Text('Tap back again to leave'),
+        ),
+        child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 40.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

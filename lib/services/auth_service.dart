@@ -13,14 +13,14 @@ class AuthService extends StateNotifier<AuthState> {
 
   late FirebaseAuth _firebaseAuth;
   late CountryWithPhoneCode _selectedCountry;
-  late Map _phoneNumber;
+   Map? _phoneNumber;
   late String _verificationId;
   List<CountryWithPhoneCode> countries = [];
 
   Stream<User?> authStateChanges() => _firebaseAuth.authStateChanges();
   CountryWithPhoneCode get selectedCountry => _selectedCountry;
   String get phoneCode => _selectedCountry.phoneCode;
-  String get formattedPhoneNumber => _phoneNumber['international'];
+  String get formattedPhoneNumber => _phoneNumber!['international'];
 
   Future<void> _loadCountries() async {
     try {
@@ -40,7 +40,7 @@ class AuthService extends StateNotifier<AuthState> {
           countries.where((item) => item.countryCode == langCode);
 
       if (filteredCountries.isEmpty) {
-        filteredCountries = countries.where((item) => item.countryCode == 'US');
+        filteredCountries = countries.where((item) => item.countryCode == 'IN');
       }
       if (filteredCountries.isEmpty) {
         throw Exception('Unable to find a default country!');
@@ -57,18 +57,19 @@ class AuthService extends StateNotifier<AuthState> {
   }
 
   Future<void> parsePhoneNumber(String inputText) async {
+    print("format");
     _phoneNumber = await FlutterLibphonenumber().parse(
       "+${_selectedCountry.phoneCode}${inputText.replaceAll(RegExp(r'[^0-9]'), '')}",
       region: _selectedCountry.countryCode,
     );
-    if (_phoneNumber['type'] != 'mobile') {
+    if (_phoneNumber!['type'] != 'mobile') {
       throw Exception('You must enter a mobile phone number.');
     }
   }
 
   Future<void> verifyPhone(Function() completion) async {
     await _firebaseAuth.verifyPhoneNumber(
-      phoneNumber: _phoneNumber['e164'],
+      phoneNumber: _phoneNumber!['e164'],
       verificationCompleted: (AuthCredential credential) async {
         await _firebaseAuth.signInWithCredential(credential);
       },

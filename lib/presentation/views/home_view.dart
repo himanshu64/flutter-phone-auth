@@ -14,20 +14,20 @@ class HomeView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final phoneNumber = ref.watch(phoneNumberProvider);
-    return DoubleBackToCloseApp(
-        snackBar: const SnackBar(
-            content: Text('Tap back again to leave'),
-          ),
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          title: const Text(
-            "Firebase Phone Auth",
-          ),
-          automaticallyImplyLeading: false,
+    
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text(
+          "Firebase Phone Auth",
         ),
-        body: Container(
+        automaticallyImplyLeading: false,
+      ),
+      body: DoubleBackToCloseApp(
+        snackBar: const SnackBar(
+          content: Text('Tap back again to leave'),
+        ),
+        child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 40.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -55,12 +55,7 @@ class HomeView extends ConsumerWidget {
                 style: Theme.of(context).textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 10),
-              Text(
-                phoneNumber,
-                style: Theme.of(context).textTheme.bodySmall,
-                textAlign: TextAlign.center,
-              ),
+              
               const Spacer(),
               SizedBox(
                 width: double.infinity,
