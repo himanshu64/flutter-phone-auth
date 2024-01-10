@@ -20,4 +20,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ### Watch the video
 
- [Demo]: <https://github.com/himanshu64/flutter-phone-auth/tree/master/demo>
+[Demo](https://github.com/himanshu64/flutter-phone-auth/tree/master/demo)
