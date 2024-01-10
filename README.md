@@ -14,3 +14,12 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+
+## DEMO
+
+### Watch the video
+
+<video src="[movie.ogg](https://github.com/himanshu64/flutter-phone-auth/blob/master/demo/otp.webm)https://github.com/himanshu64/flutter-phone-auth/blob/master/demo/otp.webm" controls>
+  Your browser does not support the video tag.
+</video>
